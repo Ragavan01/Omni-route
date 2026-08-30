@@ -44,6 +44,7 @@ export const INTENTIONALLY_INTERNAL = new Set([
   "apiKeyUsageLimitFields", // db-internal: importado só por db/apiKeys.ts (helpers de campo de limite de uso split do apiKeys.ts; mig 101)
   "backupRetention", // db-internal: importado só por db/backup.ts e db/migrationRunner.ts (política de retenção compartilhada; mora fora de backup.ts porque core.ts importa migrationRunner.ts — importar backup.ts de lá fecharia um ciclo, #10421)
   "caseMapping", // db-internal: importado só por db/core.ts (toSnakeCase/toCamelCase/objToSnake — column-mapping snake↔camel split do core.ts, #4947)
+  "chatAdmissionSettings", // intentionally-internal: settings-store do chat admission controller (leitura/escrita em key_value); consumido por import direto "@/lib/db/chatAdmissionSettings" pela rota GET/PUT /api/settings/chat-admission (Rule #2, PR #12038)
   "cleanup", // intentionally-internal: 3 API routes (purge-quota-snapshots, purge-call-logs, purge-detailed-logs)
   "cliToolState", // intentionally-internal: 14+ API routes em /api/cli-tools/*-settings
   "comboForecast", // intentionally-internal: src/lib/usage/comboForecast.ts
